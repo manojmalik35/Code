@@ -1,0 +1,46 @@
+package apr17;
+import java.util.*;
+public class medianPQ {
+	PriorityQueue<Integer> reg=new PriorityQueue<>();
+	PriorityQueue<Integer> rev=new PriorityQueue<>(Collections.reverseOrder());
+	
+	void add(int val){
+		reg.add(val);
+		rev.add(val);
+	}
+	int remove(){
+		return 0;
+	}
+	
+	int peek(){
+		if(reg.size()%2!=0){
+			while(reg.size()>0){
+				if(reg.peek()==rev.peek())
+					return reg.peek();
+				else{
+					reg.remove();
+					rev.remove();
+				}
+			}
+		}else{
+			while(reg.size()>0){
+				rev.remove();
+				if(reg.peek()==rev.peek())
+					return rev.peek();
+				else{
+					reg.remove();
+					if(rev.size()!=0)
+						rev.remove();
+				}
+			}
+		}
+		return 0;
+	}
+	public static void main(String[] args) {
+		medianPQ pq=new medianPQ();
+		 pq.add(5); pq.add(50); pq.add(30);
+		System.out.println(pq.peek());
+		
+	}
+
+}
