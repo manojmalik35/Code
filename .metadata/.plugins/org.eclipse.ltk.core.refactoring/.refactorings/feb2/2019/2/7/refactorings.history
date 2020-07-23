@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;feb2/src/feb12/displayMatrix.java&apos; to &apos;printWaveMatrix.java&apos;" description="Rename resource &apos;displayMatrix.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/feb12/displayMatrix.java" name="printWaveMatrix.java" stamp="1549982401045" updateReferences="true"/>
-</session>

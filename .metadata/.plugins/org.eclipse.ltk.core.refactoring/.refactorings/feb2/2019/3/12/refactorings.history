@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename field &apos;rdrLeft&apos; in &apos;mar17.reverserecursively.linkedlist&apos; to &apos;tempLeft&apos;&#x0D;&#x0A;- Original project: &apos;feb2&apos;&#x0D;&#x0A;- Original element: &apos;mar17.reverserecursively.linkedlist.rdrLeft&apos;&#x0D;&#x0A;- Renamed element: &apos;mar17.reverserecursively.linkedlist.tempLeft&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;rdrLeft&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;mar17{reverserecursively.java[reverserecursively[linkedlist^rdrLeft" name="tempLeft" references="true" setter="false" stamp="1552963765219" textual="false" version="1.0"/>
-</session>

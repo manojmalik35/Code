@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;feb2/src/mar15/mango.java&apos; to &apos;wordbreak.java&apos;" description="Rename resource &apos;mango.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/mar15/mango.java" name="wordbreak.java" stamp="1552704049452" updateReferences="true"/>
-</session>
