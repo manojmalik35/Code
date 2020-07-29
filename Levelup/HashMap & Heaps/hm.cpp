@@ -95,6 +95,7 @@ int longestArithSeqLength(vector<int> &A) //leet 1027
 
 int main()
 {
+    
 
     return 0;
 }
