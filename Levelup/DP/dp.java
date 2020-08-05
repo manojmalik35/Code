@@ -2147,6 +2147,59 @@ public class dp {
         return ans;
     }
 
+    static int[] evaluate(int[] lp, int[] rp, char op){
+        int[] mp = new int[2];
+        if(op == '^'){
+            mp[0] = (lp[0] * rp[1]) + (lp[1] * rp[0]);
+            mp[1] = (lp[0] * rp[0]) + (lp[1] * rp[1]);
+        }else if(op == '&'){
+            mp[0] = lp[0] * rp[0];
+            mp[1] = (lp[0] * rp[1]) + (lp[1] * rp[0]) + (lp[1] * rp[1]);
+        }else{
+            mp[0] = (lp[0] * rp[0]) + (lp[0] * rp[1]) + (lp[1] * rp[0]);
+            mp[1] = lp[1] * rp[1];
+        }
+        mp[0] %= 1003;
+        mp[1] %= 1003;
+        return mp;
+    }
+
+    static int[] booleanParenthesization_Rec(String s, int i, int j, int[][][] dp){
+        if(i == j){
+            int[] base = new int[2];
+            char ch = s.charAt(i);
+            if(ch == 'T') base[0]++;
+            else base[1]++;
+            return dp[i][j] = base;
+        }
+
+        if(dp[i][j][0] != -1)
+            return dp[i][j];
+
+        int[] mp = new int[2];
+        for(int cut = i + 1; cut < j; cut += 2){
+            int[] lp = booleanParenthesization_Rec(s, i, cut - 1, dp);
+            int[] rp = booleanParenthesization_Rec(s, cut + 1, j, dp);
+
+            char op = s.charAt(cut);
+            int[] temp = evaluate(lp, rp, op);
+            mp[0] = (mp[0] + temp[0]) % 1003;
+            mp[1] = (mp[1] + temp[1]) % 1003;
+        }
+
+        return dp[i][j] = mp;
+    }
+
+    static int booleanParenthesization(String s){//GFG
+        int[][][] dp = new int[s.length()][s.length()][2];
+        for(int[][] col : dp){
+            for(int[] cell : col)
+                Arrays.fill(cell, -1);
+        }
+        int[] ans = booleanParenthesization_Rec(s, 0, s.length() - 1, dp);
+        return ans[0];
+    }
+
     public static void main(String[] args) {
         // int[][] grid = { { 1, 3, 1 }, { 1, 5, 1 }, { 4, 2, 1 } };
         // System.out.println(minPathSum(grid));
@@ -2189,5 +2242,6 @@ public class dp {
         // System.out.println(regularExpressionMatching("mississippi", "mis*is*p*."));
 
         // System.out.println(mobileNumericKeypad(2));
+        System.out.println(booleanParenthesization("T|F^F&T|F^F^F^T|T&T^T|F^T^F&F^T|T^F"));
     }
 }
