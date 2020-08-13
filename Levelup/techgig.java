@@ -124,8 +124,11 @@ public class techgig {
         //     aval[i] = sc.nextInt();
 
         // System.out.println(solve2(req, aval));
+
         // System.out.println(minEfforts());
+
         System.out.println(zones());
         sc.close();
+
     }
 }
