@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet63 {
     public int uniquePathsWithObstacles(int[][] grid) {
         int m = grid.length, n = grid[0].length;

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet1267 {
 
     static int[][] dir = { { 0, 1 }, { 1, 0 } };

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet673 {
     public static int findNumberOfLIS(int[] nums){//Leet 673
         if(nums.length == 0)

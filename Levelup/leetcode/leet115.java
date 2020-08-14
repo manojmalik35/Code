@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet115 {
     static int numDistinct_Rec(String s, String t, int i, int j, int[][] dp) {
         if (j == t.length()) return dp[i][j] = 1;

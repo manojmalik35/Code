@@ -1,4 +1,3 @@
-package leetcode;
 import java.util.Arrays;
 public class leet940 {
     public int distinctSubseqII(String S) {// leet 940

@@ -1,4 +1,3 @@
-package leetcode;
 public class leet260{
     public int[] singleNumber(int[] nums) {
         int[] arr = new int[2];

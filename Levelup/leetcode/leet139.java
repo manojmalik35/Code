@@ -1,7 +1,4 @@
-package leetcode;
-
 import java.util.*;
-
 public class leet139 {
 
     static boolean wordBreak_Rec(String s, int si, HashSet<String> dic, boolean[] dp) {

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet72 {
     static int editDistance_Rec(String s1, String s2, int i, int j, int[][] dp){
         if(i == 0 && j == 0) return dp[i][j] = 0;

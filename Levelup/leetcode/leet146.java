@@ -1,6 +1,4 @@
-package leetcode;
 import java.util.*;
-
 class ListNode {
     int key;
     int val;

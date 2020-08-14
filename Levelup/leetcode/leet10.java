@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet10 {
     static int regularExpressionMatching_Rec(String s, String p, int i, int j, int[][] dp) {
         if (i == s.length() && j == p.length())

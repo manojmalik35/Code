@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet121 {
     public int maxProfit(int[] nums) {
         if(nums.length == 0)

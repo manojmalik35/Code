@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet44 {
     static int wildcardMatching_Rec(String s, String p, int i, int j, int[][] dp) {
         // 1 = true, 2 = false

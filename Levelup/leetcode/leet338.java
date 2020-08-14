@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet338 {
     public int[] countBits(int num) {//leet 338
         int[] dp = new int[num + 1];

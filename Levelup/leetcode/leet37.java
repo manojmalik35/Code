@@ -1,4 +1,3 @@
-package leetcode;
 import java.util.*;
 public class leet37 {
     static int[] row;

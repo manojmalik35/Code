@@ -1,4 +1,3 @@
-package leetcode;
 import java.util.HashSet;
 public class leet128 {
     public int longestConsecutive(int[] nums) {//leet 128

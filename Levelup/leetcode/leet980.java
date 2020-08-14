@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet980 {
     static int dfs(int[][] grid, int sr, int sc, int[][] dir, int count){
         if(grid[sr][sc] == 2)

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet1312 {
     static int minInsertions_Rec(String s, int i, int j, int[][] dp){
         if(i == j)

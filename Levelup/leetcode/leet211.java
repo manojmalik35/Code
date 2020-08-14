@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class leet211 {
     class WordDictionary {
 

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet639 {
     static int mod = (int) 1e9 + 7;
     static long numDecodingsII_Rec(String s, int idx, long[] dp) {

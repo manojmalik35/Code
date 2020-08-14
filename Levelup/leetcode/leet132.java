@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet132 {
     static boolean[][] palindromicSubstring(String s){
         boolean[][] dp = new boolean[s.length()][s.length()];

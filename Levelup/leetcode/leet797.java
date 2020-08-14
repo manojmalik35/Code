@@ -1,4 +1,3 @@
-package leetcode;
 import java.util.*;
 public class leet797 {
     public List<List<Integer>> ans;

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet1219 {
     
     static int dfs(int[][] grid, int i, int j, int[][] dir){

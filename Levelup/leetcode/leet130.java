@@ -1,4 +1,3 @@
-package leetcode;
 public class leet130 {
     
     static int[][] dir = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};

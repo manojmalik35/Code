@@ -1,4 +1,3 @@
-package leetcode;
 public class leet746 {
     static int minCostClimbingStairs_M(int[] cost, int idx, int[] dp){
         if(idx <= 1)

@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet583 {
     static int minDistance_Rec(String s1, String s2, int i, int j, int[][] dp){
         if(i == s1.length() && j == s2.length()) return dp[i][j] = 0;

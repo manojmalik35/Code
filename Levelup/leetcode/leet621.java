@@ -1,4 +1,3 @@
-package leetcode;
 import java.util.Arrays;
 public class leet621 {
     public int leastInterval(char[] tasks, int n) {

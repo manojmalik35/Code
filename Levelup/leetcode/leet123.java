@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet123 {
     public int maxProfit(int[] prices) {
         int n = prices.length;

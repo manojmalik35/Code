@@ -1,5 +1,3 @@
-package leetcode;
-
 public class leet122 {
     public int maxProfit(int[] prices) {
         int profit = 0;
