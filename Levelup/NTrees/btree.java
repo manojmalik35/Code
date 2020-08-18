@@ -1,4 +1,3 @@
-package NTrees;
 import java.util.*;
 public class btree{
 
@@ -672,13 +671,55 @@ public class btree{
             System.out.print(post.get(i) + " ");
     }
 
+    static int burningTree(Node root, int tar, ArrayList<ArrayList<Integer>> ans){
+        if(root == null) return -1;
+
+        if(root.data == tar){
+            kDown(root, null, 0, ans);
+            return 1;
+        }
+
+        int ld = burningTree(root.left, tar, ans);
+        if(ld != -1){
+            kDown(root, root.left, ld, ans);
+            return ld + 1;
+        }
+
+        int rd = burningTree(root.right, tar, ans);
+        if(rd != -1){
+            kDown(root, root.right, rd, ans);
+            return rd + 1;
+        }
+
+        return -1;
+    }
+
+    static void kDown(Node node, Node blocker, int k, ArrayList<ArrayList<Integer>> ans){
+        if(node == null || node == blocker) return;
+        
+        if(k >= ans.size())
+            ans.add(new ArrayList<>());
+        ans.get(k).add(node.data);
+
+        kDown(node.left, blocker, k + 1, ans);
+        kDown(node.right, blocker, k + 1, ans);
+
+    }
+
+    // https://www.geeksforgeeks.org/burn-the-binary-tree-starting-from-the-target-node/
+    static ArrayList<ArrayList<Integer>> burningTree(Node root, int target){
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        burningTree(root, target, ans);
+        return ans;
+    }
     
+
 
     public static void main(String[] args) {
 
-        int[] pre = {8, 3, 1, 10, 6, 4, 7, 14, 13};
-        int[] in = {1, 3, 8, 4, 6, 7, 10, 13, 14};
-        Node root = construct2(pre, in, 0, pre.length - 1, 0, in.length - 1);
+        // int[] pre = {8, 3, 1, 10, 6, 4, 7, 14, 13};
+        // int[] in = {1, 3, 8, 4, 6, 7, 10, 13, 14};
+        // Node root = construct2(pre, in, 0, pre.length - 1, 0, in.length - 1);
         // display(root);
         // List<List<Integer>> res = pathSumII(root, 22);
         // for(List<Integer> s : res)
@@ -737,5 +778,11 @@ public class btree{
         // System.out.println(maxLen);
         // System.out.println(maxLengthConsecutiveSequence2(root, root.data, 0));
         // morrisPost(root);
+
+
+        int[] pre = {12, 13, 10, 14, 21, 24, 15, 22, 23};
+        int[] in = {13, 12, 21, 14, 24, 10, 22, 15, 23};
+        Node root = construct2(pre, in, 0, pre.length - 1, 0, in.length - 1);
+        System.out.println(burningTree(root, 14));
     }
 }
