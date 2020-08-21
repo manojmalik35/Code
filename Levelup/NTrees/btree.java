@@ -712,9 +712,67 @@ public class btree{
         burningTree(root, target, ans);
         return ans;
     }
+
+    // https://www.geeksforgeeks.org/convert-a-binary-tree-to-a-circular-doubly-link-list/
+    Node bTreeToClistII(Node root)
+    {
+        if(root == null)
+            return null;
+
+        Node ltail = bTreeToClistII(root.left);
+        Node rtail = bTreeToClistII(root.right);
+
+        Node lhead = null, rhead = null;
+        if(ltail != null)
+            lhead = ltail.right;
+        else{
+            ltail = root;
+            lhead = root;
+        }
+
+        if(rtail != null)
+            rhead = rtail.right;
+        else{
+            rtail = root;
+            rhead = root;
+        }
+
+        ltail.right = root;
+        root.left = ltail;
+        root.right = rhead;
+        rhead.left = root;
+
+        lhead.left = rtail;
+        rtail.right = lhead;
+        return rtail;
+    }
+
+    static Node head = null;
+    static Node previous = null;
+    void bTreeToClist_(Node root){
+        if(root == null) return;
+
+        bTreeToClist_(root.left);
+
+        if(head == null) head = root;
+        else{
+            root.left = previous;
+            previous.right = root;
+        }
+        previous = root;
+
+        bTreeToClist_(root.right);
+    }
+
+    Node bTreeToClist(Node root)
+    {
+        bTreeToClist_(root);
+        head.left = previous;
+        previous.right = head;
+        return head;
+        // return bTreeToClistII(root).right;
+    }
     
-
-
     public static void main(String[] args) {
 
         // int[] pre = {8, 3, 1, 10, 6, 4, 7, 14, 13};
