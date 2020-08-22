@@ -172,7 +172,7 @@ public class btree{
     }
 
     static Node x = null, y = null, prev = null;
-    static boolean recoverBST(Node root){
+    static boolean recoverBST(Node root){//leet 99
 
         if(root == null)
             return false;
@@ -209,6 +209,7 @@ public class btree{
         return root;
     }
 
+    //leet 1008
     static int index = 0;
     static Node constructBSTFromPreOrder(int[] pre, int min, int ele, int max){//O(n)
 
@@ -244,6 +245,81 @@ public class btree{
 
         return Math.max(lh, rh) + 1;
     }
+
+    static class LOHelper{
+        int lrange;
+        int rrange;
+        Node parent;
+        boolean isLeft;
+
+        LOHelper(int lrange, int rrange, Node parent, boolean isLeft){
+            this.lrange = lrange;
+            this.rrange = rrange;
+            this.parent = parent;
+            this.isLeft = isLeft;
+        }
+    }
+
+    // https://practice.geeksforgeeks.org/problems/convert-level-order-traversal-to-bst/1
+    static Node constructBSTFromLevelOrder(int[] lev){
+         Queue<LOHelper> que = new LinkedList<>();
+         Node root = new Node(lev[0]);
+         que.add(new LOHelper(-(int)1e9, root.data, root, true));
+         que.add(new LOHelper(root.data, (int)1e9, root, false));
+         int idx = 1;
+         while(que.size() > 0 && idx < lev.length){
+             LOHelper l = que.remove();
+
+             int ele = lev[idx];
+             if(ele > l.lrange && ele < l.rrange){
+                 Node nn = new Node(ele);
+                 if(l.isLeft) l.parent.left = nn;
+                 else l.parent.right = nn;
+                 idx++;
+
+                 que.add(new LOHelper(l.lrange, ele, nn, true));
+                 que.add(new LOHelper(ele, l.rrange, nn, false));
+             }
+         }
+
+         return root;
+    }
+
+    static class LOHelp{
+        Node lrange;
+        Node rrange;
+        boolean isLeft;
+
+        LOHelp(Node lrange, Node rrange, boolean isLeft){
+            this.lrange = lrange;
+            this.rrange = rrange;
+            this.isLeft = isLeft;
+        }
+    }
+
+    static Node constructBSTFromLevelOrderII(int[] lev){
+        Queue<LOHelp> que = new LinkedList<>();
+        Node root = new Node(lev[0]);
+        que.add(new LOHelp(new Node(-(int)1e9), root, true));
+        que.add(new LOHelp(root, new Node((int)1e9), false));
+        int idx = 1;
+        while(que.size() > 0 && idx < lev.length){
+            LOHelp l = que.remove();
+
+            int ele = lev[idx];
+            if(ele > l.lrange.data && ele < l.rrange.data){
+                Node nn = new Node(ele);
+                if(l.isLeft) l.rrange.left = nn;
+                else l.lrange.right = nn;
+                idx++;
+
+                que.add(new LOHelp(l.lrange, nn, true));
+                que.add(new LOHelp(nn, l.rrange, false));
+            }
+        }
+
+        return root;
+   }
 
     static int leftLevel = -1;
     static void leftView(Node root, int level){//DFS
@@ -772,7 +848,42 @@ public class btree{
         return head;
         // return bTreeToClistII(root).right;
     }
-    
+
+    static class Res{
+        Node pre;
+        Node succ;
+    }
+    // https://www.geeksforgeeks.org/inorder-predecessor-successor-given-key-bst/
+    public static void findPreSuc(Node root, Res p, Res s, int key)
+    {
+        Node curr = root, pred = null, succ = null;
+        while(curr != null){
+            if(curr.data < key){
+                pred = curr;
+                curr = curr.right;
+            }else if(curr.data > key){
+                succ = curr;
+                curr = curr.left;
+            }else{
+                
+                if(curr.left != null){
+                    pred = curr.left;
+                    while(pred.right != null) pred = pred.right;
+                }
+
+                if(curr.right != null){
+                    succ = curr.right;
+                    while(succ.left != null) succ = succ.left;
+                }
+
+                break;
+            }
+        }
+
+        p.pre = pred;
+        s.succ = succ;
+    }
+
     public static void main(String[] args) {
 
         // int[] pre = {8, 3, 1, 10, 6, 4, 7, 14, 13};
@@ -838,9 +949,14 @@ public class btree{
         // morrisPost(root);
 
 
-        int[] pre = {12, 13, 10, 14, 21, 24, 15, 22, 23};
-        int[] in = {13, 12, 21, 14, 24, 10, 22, 15, 23};
-        Node root = construct2(pre, in, 0, pre.length - 1, 0, in.length - 1);
-        System.out.println(burningTree(root, 14));
+        // int[] pre = {12, 13, 10, 14, 21, 24, 15, 22, 23};
+        // int[] in = {13, 12, 21, 14, 24, 10, 22, 15, 23};
+        // Node root = construct2(pre, in, 0, pre.length - 1, 0, in.length - 1);
+        // System.out.println(burningTree(root, 14));
+
+        int[] lev = {7, 4, 12, 3, 6, 8, 1, 5, 10};
+        // Node root = constructBSTFromLevelOrder(lev);
+        Node root = constructBSTFromLevelOrderII(lev);
+        display(root);
     }
 }
