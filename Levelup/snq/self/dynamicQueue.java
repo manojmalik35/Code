@@ -1,16 +1,16 @@
 public class dynamicQueue extends queue{
 
     public dynamicQueue(){
-        resize(5);
+        super(5);
     }
 
     public dynamicQueue(int size){
-        resize(size);
+        super(size);
     }
 
     @Override
     public void push(int val){
-        if(this.size() == maxSize()){
+        if(this.size() == super.maxSize()){
             int[] temp = new int[this.size()];
             for(int i = 0; i < temp.length; i++){
                 temp[i] = top_();
