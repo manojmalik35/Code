@@ -1,14 +1,19 @@
 public class client{
 
     static void simpleStack() throws Exception{
-        stack st = new stack(3);
-        st.push(10);
+        // stack<Integer> st = new stack<>();
+        // for(int i = 0; i < 10; i++)
+        //     st.push((int)(Math.random() * 100));
+        // System.out.println(st);
+        // st.pop();
+        // System.out.println(st.top());
 
-        dynamicStack ds = new dynamicStack(3);
-        ds.push(10);
-        ds.push(20);
-        ds.push(30);
-        ds.push(40);
+        Integer[] arr = new Integer[10];
+        for(int i = 0; i < 10; i++)
+            arr[i] = (int)(Math.random() * 100);
+        dynamicStack ds = new dynamicStack(arr);
+        System.out.println(ds);
+        ds.pop();
         System.out.println(ds.top());
     }
 
@@ -31,7 +36,7 @@ public class client{
         }
     }
     public static void main(String[] args) throws Exception{
-        // simpleStack();
-        queue();
+        simpleStack();
+        // queue();
     }
 }
