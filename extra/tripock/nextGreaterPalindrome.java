@@ -1,5 +1,6 @@
 public class nextGreaterPalindrome{
 
+    // https://www.spoj.com/problems/PALIN/
     static void incrementMiddle(int[] arr, int mid, int n){//143325
         int nd = arr[mid] + 1;
         int carry = nd / 10;
